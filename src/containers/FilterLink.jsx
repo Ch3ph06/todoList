@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 import link from '../components/link.jsx';
 
-const FilterLink = ({ setVisibilityFilter, filter, ...props }) => <link {...props} onClick={() => setVisibilityFilter(filter)} />;
+const FilterLink = ({ setVisibilityFilter, filter, addTodo, toggleTodo, active, children, ...props }) => <link {...props} onClick={() => setVisibilityFilter(filter)} />;
 
 const mapStateToProps = (state, ownprops) => {
   return {
