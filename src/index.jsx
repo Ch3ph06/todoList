@@ -6,7 +6,7 @@ import logger from 'redux-logger';
 import todoApp from './reducers';
 import App from './components/app.jsx';
 
-let store = createStore(todoApp, applyMiddleware(logger));
+let store = createStore(todoApp, applyMiddleware(logger()));
 
 render(
   <Provider store={store}>

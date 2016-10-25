@@ -1,37 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 
+class AddTodo extends Component {
+  state = { value: '' };
 
-const AddTodo = ({ addTodo }) => {
-  let input;
+  addTodo = () => {
+    const { addTodo } = this.props;
+    const { value } = this.state;
 
-  return (
-    <div>
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          if (!input.value.trim()) {
-            return;
-          }
-          console.log(input.value);
-          addTodo(input.value);
-          input.value = ``;
-        }}
-      >
-        <input
-          ref={node => {
-            input = node;
-          }}
-        />
-        <button type="submit">
+    console.log(addTodo);
+    addTodo(value);
+    this.setState({ value: '' })
+  }
+
+  render() {
+    return (
+      <div>
+        <input onChange={({ target: { value }}) => this.setState({ value })} />
+        <button onClick={this.addTodo}>
           Add Todo
         </button>
-      </form>
-    </div>
-  );
-};
+      </div>
+    );
+  }
+}
+
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(actions, dispatch);
 
